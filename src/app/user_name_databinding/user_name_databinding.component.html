@@ -1,0 +1,7 @@
+<h4>User Name Databinding Sample</h4>
+<div class="form-group">
+  <input class="form-control" [(ngModel)]="userName">
+  <p>{{ userName }}</p>
+  <button class="btn btn-primary" [disabled]="!enableUserNameButton()" (click)="addUser()">Add User</button>
+  <p>{{ newUserLabel }}</p>
+</div>
