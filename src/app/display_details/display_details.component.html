@@ -1,0 +1,11 @@
+<h4>Display Details (Directives samples)</h4>
+<div class="form-group">
+  <button class="btn btn-primary" (click)="toggleSecretParagraph()">Display Details</button>
+  <p *ngIf="secretParagraphIsVisible">Secret Password = tuna</p>
+</div>
+<ul>
+  <li class="col-md-12" *ngFor="let item of buttonClickValues; let i = index"
+    [ngStyle]="{'background-color' : getColorForItem(item, i)}"
+    [ngClass]="{coloredItem : toggleColoredItem(item, i)}"
+  >{{ item }}</li>
+</ul>
