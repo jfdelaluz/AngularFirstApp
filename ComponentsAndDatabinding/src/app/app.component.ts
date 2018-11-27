@@ -18,6 +18,7 @@ export class AppComponent {
       content: 'Some Content'
     }
   ];
+  gameControlResult: number = 0;
 
   @Input() onServerAdded(serverData: {serverName: string, serverContent: string}) {
     this.serverElements.push({
@@ -41,5 +42,10 @@ export class AppComponent {
 
   onDestroyFirst() {
     this.serverElements.splice(0, 1);
+  }
+
+  incrementGameControlResult() {
+    this.gameControlResult++;
+    console.log(this.gameControlResult);
   }
 }
