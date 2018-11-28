@@ -18,7 +18,8 @@ export class AppComponent {
       content: 'Some Content'
     }
   ];
-  gameControlResult: number = 0;
+  oddNumbers: number[] = [];
+  evenNumbers: number[] = [];
 
   @Input() onServerAdded(serverData: {serverName: string, serverContent: string}) {
     this.serverElements.push({
@@ -44,8 +45,11 @@ export class AppComponent {
     this.serverElements.splice(0, 1);
   }
 
-  incrementGameControlResult() {
-    this.gameControlResult++;
-    console.log(this.gameControlResult);
+  saveNumber(firedNumber: number) {
+    if (firedNumber % 2 === 0) {
+      this.evenNumbers.push(firedNumber);
+    } else {
+      this.oddNumbers.push(firedNumber);
+    }
   }
 }

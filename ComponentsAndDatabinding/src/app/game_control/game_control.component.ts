@@ -7,18 +7,22 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class GameControlComponent {
-  @Output() gameStarted = new EventEmitter<{}>();
+  @Output() gameStarted = new EventEmitter<number>();
   timer;
+  gameControlResult: number = 0;
   startButtonDisabled = false;
   stopButtonDisabled = true;
 
   onStartGame() {
     this.startButtonDisabled = true;
     this.stopButtonDisabled = false;
+
     this.timer = setInterval(
-      this.emitEvent,
-      1000,
-      this.gameStarted
+      () => {
+        this.gameControlResult++;
+        this.gameStarted.emit(this.gameControlResult);
+      },
+      1000
     );
   }
 
@@ -26,10 +30,6 @@ export class GameControlComponent {
     clearInterval(this.timer);
     this.startButtonDisabled = false;
     this.stopButtonDisabled = true;
-  }
-
-  emitEvent(gameStarted) {
-    gameStarted.emit({});
   }
 
   isStartButtonDisabled() {
