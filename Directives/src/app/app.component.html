@@ -48,6 +48,11 @@
       </ng-template>
       <p appBasicHighlight>Style from BasicHighlight Directive</p>
       <p appBetterHighlight>Style from BetterHighlight Directive</p>
+      <p appBetterHighlight
+        [defaultTextAlign]="'center'"
+        [highlightTextAlign]="'right'">
+        Style from BetterHighlight Directive dynamically setting values
+      </p>
     </div>
   </div>
 </div>
