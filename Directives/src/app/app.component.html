@@ -75,6 +75,12 @@
           </li>
         </div>
       </ul>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">The value is 5</p>
+        <p *ngSwitchCase="10">The value is 10</p>
+        <p *ngSwitchCase="100">The value is 100</p>
+        <p *ngSwitchDefault>The value is Default</p>
+      </div>
     </div>
   </div>
 </div>

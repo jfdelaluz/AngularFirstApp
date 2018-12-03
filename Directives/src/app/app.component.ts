@@ -12,6 +12,7 @@ export class AppComponent {
   onlyOdd = false;
   onlyEven = false;
   onlyOdd2 = false;
+  value = 10;
 
   showAllNumbers() {
     this.onlyOdd = false;
