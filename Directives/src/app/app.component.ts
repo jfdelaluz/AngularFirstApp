@@ -11,6 +11,7 @@ export class AppComponent {
   evenNumbers = [2, 4];
   onlyOdd = false;
   onlyEven = false;
+  onlyOdd2 = false;
 
   showAllNumbers() {
     this.onlyOdd = false;
@@ -25,5 +26,9 @@ export class AppComponent {
   showOnlyEven() {
     this.onlyOdd = false;
     this.onlyEven = true;
+  }
+
+  showOnlyOdd2() {
+    this.onlyOdd2 = !this.onlyOdd2;
   }
 }

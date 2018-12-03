@@ -53,6 +53,28 @@
         [highlightTextAlign]="'right'">
         Style from BetterHighlight Directive dynamically setting values
       </p>
+      <h3>Unless directive sample</h3>
+      <button class="btn btn-primary" (click)="showOnlyOdd2()">Toggle Odd / Even numbers</button>
+      <ul class="list-group">
+        <div *ngIf="onlyOdd2">
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: oddNumber % 2 !== 0}"
+            [ngStyle]="{backgroundColor: oddNumber % 2 !== 0 ? 'yellow':'transparent'}"
+            *ngFor="let oddNumber of oddNumbers">
+            {{ oddNumber }}
+          </li>
+        </div>
+        <div *appUnless="onlyOdd2">
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: evenNumber % 2 !== 0}"
+            [ngStyle]="{backgroundColor: evenNumber % 2 !== 0 ? 'yellow':'transparent'}"
+            *ngFor="let evenNumber of evenNumbers">
+            {{ evenNumber }}
+          </li>
+        </div>
+      </ul>
     </div>
   </div>
 </div>
