@@ -15,11 +15,11 @@ export class AccountComponent {
 
   constructor(
     private loggingService: LoggingService,
-    private accounsService: AccountsService
+    private accountsService: AccountsService
   ) {}
 
   onSetTo(status: string) {
-    this.accounsService.updateStatus(this.id, status);
+    this.accountsService.updateStatus(this.id, status);
     this.loggingService.logStatusChange(status);
   }
 }
