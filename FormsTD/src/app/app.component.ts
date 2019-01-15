@@ -14,6 +14,23 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // This code below (setValue function) populates the whole form mandatory
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // });
+    // This function patchValue(only available in the ngForm form attribute)
+    // sets only specified values
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    });
   }
 
   // onSubmit(form: NgForm) {
