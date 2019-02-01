@@ -11,6 +11,7 @@ export class AppComponent implements OnInit{
   genders = ['male', 'female'];
   signupForm: FormGroup;
   forbiddenUsernames = ['Chris', 'Anna'];
+  submitEnabled = false;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -21,10 +22,34 @@ export class AppComponent implements OnInit{
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // );
+
+    this.signupForm.statusChanges.subscribe(
+      (status) => this.toggleSubmit(status)
+    );
+
+    this.signupForm.setValue({
+      'userData': {
+        'username': 'Test',
+        'email': 'test@test.com'
+      },
+      'gender': 'male',
+      'hobbies': []
+    });
+
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'Anna'
+      }
+    });
   }
 
   onSubmit() {
-    console.log(this.signupForm);
+    console.log(this.signupForm.value);
+    this.clearForm();
   }
 
   onAddHobby() {
@@ -51,5 +76,27 @@ export class AppComponent implements OnInit{
       }, 1500);
     });
     return promise;
+  }
+
+  toggleSubmit(formStatus) {
+    if (formStatus === 'VALID') {
+      this.submitEnabled = true;
+    } else {
+      this.submitEnabled = false;
+    }
+  }
+
+  clearForm() {
+    this.signupForm.reset({
+      'userData': {
+        'username': 'Test',
+        'email': 'test@test.com'
+      },
+      'gender': 'male'
+    });
+
+    while ((<FormArray>this.signupForm.get('hobbies')).length !== 0) {
+      (<FormArray>this.signupForm.get('hobbies')).removeAt(0);
+    }
   }
 }
